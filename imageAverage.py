@@ -13,7 +13,7 @@ def main(imageFilename):
     image = columnSort(image)
 
     image.save(outfilename)
-    print imagFilename " outputted to " outfilename "; average brightness ", brightnessAverage(image)
+    print "Outputted to ", outfilename, "; average brightness: ", brightnessAverage(image)
 
 
 def columnSort(image):
@@ -22,20 +22,19 @@ def columnSort(image):
 
     # Loop through each column.
     for column in range(0,width):
-        print "Sorting column ", column, " of ", height, "."
         pixelColumn = []
 
         for x in range(0,height):
-            pixelColumn.append(pixelList[x*width + column])
+            pixelColumn.append(pixels[x*width + column])
 
         pixelColumn = sorted(pixelColumn,reverse=True)
 
 
         for x in range(0,height):
-            pixelList[x*width + column] = pixelColumn[x]
+            pixels[x*width + column] = pixelColumn[x]
 
     
-    image.putdata(pixelList)
+    image.putdata(pixels)
     return image
 
 def imageSort(image):
